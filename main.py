@@ -1,6 +1,7 @@
 import time
 
 from pypresence import Presence
+from pypresence.types import ActivityType
 
 from config import settings
 
@@ -17,6 +18,7 @@ def main():
             start=int(69.0),
             large_image='nyarch',
             large_text='ദ്ദി( • ᴗ - ) ✧',
+            activity_type=ActivityType.WATCHING,
             buttons=[
                 {
                     'label': 'GitHub',
