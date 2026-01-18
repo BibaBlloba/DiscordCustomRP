@@ -1,9 +1,19 @@
+import logging
+import sys
 import time
 
 from pypresence import Presence
 from pypresence.types import ActivityType
 
 from config import settings
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
+
+logger = logging.getLogger(__name__)
 
 
 def main(loop: bool = False):
@@ -28,7 +38,7 @@ def main(loop: bool = False):
 
     try:
         RPC.connect()
-        print('Running...')
+        logger.info('Running...')
 
         if loop:
             activity_types = [ActivityType.COMPETING, ActivityType.WATCHING]
@@ -40,10 +50,10 @@ def main(loop: bool = False):
             RPC.update(**base_params, activity_type=ActivityType.COMPETING)
 
     except Exception as e:
-        print(f'Exception: {e}')
+        logger.error(f'Exception: {e}')
     finally:
         RPC.close()
-        print('Connection closed.')
+        logger.error('Connection closed.')
 
 
 if __name__ == '__main__':
