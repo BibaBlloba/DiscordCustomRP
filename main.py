@@ -41,7 +41,7 @@ def main(loop: bool = False):
 
         if loop:
             activity_types = [ActivityType.COMPETING, ActivityType.WATCHING]
-            images = ['kissingboykissers_512x512_png', 'nyarch']
+            images = ['kissingboykissers_512x512_png', 'astolfo_512x512']
             while True:
                 for activity_type, image in zip(activity_types, images):
                     RPC.update(
